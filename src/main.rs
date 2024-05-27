@@ -18,25 +18,19 @@ fn main() {
             let mut mode = mode_clone.lock().unwrap(); 
             for key in &keys {
                 if *key == Keycode::Up {
-                    if *mode != 0 {
-                        *mode = 0;
-                    } else {
-                        *mode = 1;
-                    }
+                    *mode = 1;
                 } else if *key == Keycode::Down {
-                    if *mode != 0 {
-                        *mode = 0;
-                    } else {
-                        *mode = 2;
-                    }
+                    *mode = 2;
+                } else if *key == Keycode::Left || *key == Keycode::Right {
+                    *mode = 0;
                 }
             }
-            thread::sleep(Duration::from_millis(100));
+            thread::sleep(Duration::from_micros(1));
         }
     });
 
     loop {
-        thread::sleep(Duration::from_millis(170));
+        thread::sleep(Duration::from_millis(100));
         let mode = mode.lock().unwrap(); 
         if *mode == 1 {
             let _ = enigo.scroll(-1, Axis::Vertical);
