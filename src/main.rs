@@ -27,12 +27,12 @@ fn main() {
                     *mode = 0;
                 }
             }
-            thread::sleep(Duration::from_micros(1));
+            thread::sleep(Duration::from_micros(5));
         }
     });
 
     loop {
-        thread::sleep(Duration::from_millis(100));
+        thread::sleep(Duration::from_millis(80));
         let mode = mode.lock().unwrap(); 
         if *mode == 1 {
             let _ = enigo.scroll(-1, Axis::Vertical);
