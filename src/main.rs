@@ -1,7 +1,9 @@
 use enigo::*;
-use std::sync::{Arc, Mutex};
-use std::thread;
-use std::time::Duration;
+use std::{
+    thread,
+    sync::{Arc, Mutex},
+    time::Duration
+};
 use device_query::{DeviceQuery, DeviceState, Keycode};
 
 fn main() {
